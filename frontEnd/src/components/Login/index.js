@@ -11,7 +11,6 @@ export default function Login({ setToken, setUserType }) {
   const [inputType, setInputType] = useState("password");
   const navigator = useNavigate();
 
-  
   const triggerPasswordType = () => {
     if (inputType === "password") {
       setInputType("text");
@@ -40,11 +39,10 @@ export default function Login({ setToken, setUserType }) {
       setUserType(res.data.type);
       if (res.data.type === "seller") {
         navigator("/seller");
-      }else{
+      } else {
         navigator("/");
       }
     } catch (err) {
-      console.log(err.response);
       if (err.response.status === 404) {
         setErrorMessage("you enter a wrong Email");
       } else if (err.response.status === 403) {

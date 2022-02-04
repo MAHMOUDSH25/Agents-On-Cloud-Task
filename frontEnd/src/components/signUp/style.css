@@ -75,3 +75,23 @@
   cursor: pointer;
   font-size: 20px;
 }
+
+/* ------------------------------------- responsive ------------------*/
+
+@media (max-width: 600px) {
+  .signUp-container {
+    height: 60vh;
+  }
+  .signUp-content {
+    width: 90%;
+  }
+
+  .signUp-content div,
+  .signUp-content input {
+    width: 90%;
+  }
+
+  .signUp-show-password {
+    right: 7%;
+  }
+}

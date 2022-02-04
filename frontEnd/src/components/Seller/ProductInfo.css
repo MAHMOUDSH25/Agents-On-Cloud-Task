@@ -141,17 +141,36 @@
   color: white;
   font-size: 20px;
   cursor: pointer;
-
 }
 
 .rejected-btnAction {
   display: block;
   width: max-content;
   padding: 5px 10px;
-  background-color: #DC3545;
-  border: 1px solid #DC3545;
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
   border-radius: 10px;
   color: white;
   font-size: 20px;
   cursor: pointer;
+}
+
+/* ------------------------------------- responsive ------------------*/
+
+@media (max-width: 600px) {
+  .product-container {
+    flex-direction: column;
+  }
+
+  .product-info {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .product-booking {
+    width: 100%;
+    margin-top: 50px;
+  }
+  .status-btn-container {
+    margin-top: 25px;
+  }
 }

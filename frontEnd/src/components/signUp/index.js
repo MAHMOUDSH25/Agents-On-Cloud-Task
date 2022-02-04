@@ -51,7 +51,6 @@ export default function SignUp() {
         Navigate("/login");
       }
     } catch (err) {
-      console.log(err.response.status);
       if (err.response.status === 404) {
         setErrorMessage("you enter a wrong Email");
       } else if (err.response.status === 403) {

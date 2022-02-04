@@ -31,7 +31,7 @@ export default function ProductInfo({ token, product }) {
     if (product) {
       getBooking();
     }
-  }, [product]);
+  }, [product, token]);
 
   const toPendingStatus = () => {
     setCurrentStatus("pending");
@@ -52,13 +52,16 @@ export default function ProductInfo({ token, product }) {
           headers: { authorization: `Bearer ${token}` },
         }
       );
-      // here i make a copy from pending array then splice with index to
+      // here after chick from back end if all thing okay
+      // i make a copy from pending array then splice with index to
       // delete this object from array.
-      const copy = [...pendingBooking];
-      copy.splice(i, 1);
-      setPendingBooking(copy);
-      // add the updated object to accepted array after deleted from pending
-      setAcceptedBooking([...acceptedBooking, updatedBook.data]);
+      if (updatedBook.status === 200) {
+        const copy = [...pendingBooking];
+        copy.splice(i, 1);
+        setPendingBooking(copy);
+        // add the updated object to accepted array after deleted from pending
+        setAcceptedBooking([...acceptedBooking, updatedBook.data]);
+      }
     } catch (error) {}
   };
 
@@ -73,11 +76,14 @@ export default function ProductInfo({ token, product }) {
           headers: { authorization: `Bearer ${token}` },
         }
       );
-      // here i make a copy from pending array then splice with index to
+      // here after chick from back end if all thing okay
+      // i make a copy from pending array then splice with index to
       // delete this object from array.
-      const copy = [...pendingBooking];
-      copy.splice(i, 1);
-      setPendingBooking(copy);
+      if (updatedBook.status === 200) {
+        const copy = [...pendingBooking];
+        copy.splice(i, 1);
+        setPendingBooking(copy);
+      }
     } catch (error) {}
   };
 
@@ -108,7 +114,11 @@ export default function ProductInfo({ token, product }) {
           </div>
           {currentStatus === "pending" ? (
             <>
-              <h3 className="status-title">Pending Requests :</h3>
+              <h3 className="status-title">
+                {pendingBooking.length
+                  ? "Pending Requests :"
+                  : "No Pending Request"}
+              </h3>
               <div className="pending-cards">
                 {pendingBooking.map((element, i) => {
                   return (
@@ -147,11 +157,15 @@ export default function ProductInfo({ token, product }) {
             </>
           ) : (
             <>
-              <h3 className="status-title">Accepted Requests :</h3>
+              <h3 className="status-title">
+                {acceptedBooking.length
+                  ? "Accepted Requests :"
+                  : "No Accepted Request"}
+              </h3>
               <div className="accepted-cards">
                 {acceptedBooking.map((element) => {
                   return (
-                    <div className="accepted-card">
+                    <div className="accepted-card" key={element._id}>
                       <p>
                         Date : <span>{element.date.split("T")[0]}</span>
                       </p>

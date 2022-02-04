@@ -54,7 +54,10 @@ const updateBook = async (req, res) => {
 const getUserBooking = async (req, res) => {
   try {
     const userId = req.token.userId;
-    const userBooking = await bookingModel.find({ userId: userId });
+    const userBooking = await bookingModel
+      .find({ userId: userId })
+      .populate("product")
+      .sort({ date: 1 });
     res.status(200).json(userBooking);
   } catch (error) {
     res.status(400).json(error);
