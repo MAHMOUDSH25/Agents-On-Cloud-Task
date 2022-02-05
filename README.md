@@ -1,5 +1,20 @@
 # Agents-On-Cloud-Task
 
+## About 
+
+A booking web application have two different users as mentioned below:
+
+#### Seller
+ - Who can only add one product or service 
+ - Able to see all  appointment request then accept/reject appointment request.
+
+#### Buyer
+- Who can see list of all products or services
+- Make A reserve or appointment for any Product
+- see his all previous appointment requests and its status(pending, accepted, or rejected).
+
+### This project is responsive  
+
 ## Run this project
 
 this project contain two folder
