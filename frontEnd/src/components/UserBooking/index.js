@@ -33,13 +33,12 @@ export default function UserBooking({ token }) {
           top: violation.offsetTop,
           behavior: "smooth",
         });
-      }, 500);
+      }, 1000);
     }
   }, [newId]);
 
   return (
     <>
-      {newId}
       {booking.length ? (
         <>
           <p className="user-booking-title">Your Booking</p>

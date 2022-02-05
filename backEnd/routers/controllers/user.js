@@ -2,7 +2,7 @@ const userModel = require("../../db/models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const addUser = async (req, res) => {
+const signUp = async (req, res) => {
   try {
     const { name, email, password, type } = req.body;
     const newUser = new userModel({ name, email, password, type });
@@ -39,6 +39,6 @@ const login = async (req, res) => {
 };
 
 module.exports = {
-  addUser,
+  signUp,
   login,
 };

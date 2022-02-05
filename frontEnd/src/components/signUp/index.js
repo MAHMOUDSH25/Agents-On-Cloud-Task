@@ -51,10 +51,9 @@ export default function SignUp() {
         Navigate("/login");
       }
     } catch (err) {
-      if (err.response.status === 404) {
-        setErrorMessage("you enter a wrong Email");
-      } else if (err.response.status === 403) {
-        setErrorMessage("you enter a wrong Password");
+      console.log(err.response.data);
+      if (err.response.data&& err.response.data.code ===11000){
+        setErrorMessage("You already have an account with this Email")
       }
     }
   };
